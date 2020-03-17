@@ -27,10 +27,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="">主页</a>
+                        <a class="nav-link" href="{% url 'main:index' %}">主页</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'blog:blog_index' %}">博客</a>
+                        <a class="nav-link" href="">博客</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="">ME</a>
@@ -41,34 +41,11 @@
 
     </nav>
 
-    <hr>
     <div class="container">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="card">
-                    <img src="{% static 'main/images/learning_log.png' %}" alt="笔记项目图片">
-                    <div class="card-body">
-                        <h5 class="card-title">笔记项目</h5>
-                        <p class="card-text">参考《Pytnon Crash Course》</p>
-                        <a href="{% url 'learning_logs:index' %}" class="btn btn-primary" target="_blank">记笔记</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="card">
-                    <img src="{% static 'main/images/poll_project.png' %}" alt="投票项目图片">
-                    <div class="card-body">
-                        <h5 class="card-title">投票项目</h5>
-                        <p class="card-text">参考Django官网的入门教程</p>
-                        <a href="{% url 'main:come_soon' %}" class="btn btn-primary" target="_blank">开始投票</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        {% block page_content %}{% endblock %}
     </div>
 
-
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
