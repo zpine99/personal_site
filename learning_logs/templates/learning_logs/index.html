@@ -1,0 +1,14 @@
+{% extends "learning_logs/base.html" %}
+
+{% block page_header %}
+  <div class="jumbotron">
+    <h1 class="display-3">温故而知新</h1>
+
+    <p class="lead">
+      如果你不能把学到的知识记录和表达出来，就说明你还没真正掌握。从今天开始创建自己的私人知识库。
+    </p>
+
+    <a class="btn btn-lg btn-primary" href="{% url 'users:register' %}"
+        role="button">注册 &raquo;</a>
+  </div>
+{% endblock page_header %}
