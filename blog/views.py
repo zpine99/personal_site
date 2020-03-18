@@ -1,17 +1,24 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import Post, Comment
 from .forms import CommentForm
 
 
 def blog_index(request):
-    posts = Post.objects.all().order_by('-created_on')
-    context = {
-        'posts': posts,
-    }
-    return render(request, 'blog/blog_index.html', context)
+    object_list = Post.objects.all().order_by('-created_on')
+    paginator = Paginator(object_list, 3)
+    page_number = request.GET.get('page')
+    try:
+        page_obj = paginator.page(page_number)
+    except PageNotAnInteger:
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        page_obj = paginator.page(paginator.num_pages)
+    return render(request, 'blog/blog_index.html', {'page_number': page_number,
+                                                    'page_obj': page_obj})
 
 
 def blog_category(request, category):

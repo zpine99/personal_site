@@ -3,7 +3,7 @@
 <div class="col-md-8 offset-md-2">
     <!-- <h1>Blog Index</h1> -->
     <hr>
-    {% for post in posts %}
+    {% for post in page_obj %}
     <h2><a href="{% url 'blog:blog_detail' post.pk%}">{{ post.title }}</a></h2>
     <small>
         {{ post.created_on.date }} |&nbsp;
@@ -16,5 +16,9 @@
     </small>
     <p>{{ post.body | slice:":400" }}...</p>
     {% endfor %}
+
+    {% include 'pagination.html' with page_obj=page_obj %}
 </div>
+
+
 {% endblock %}
