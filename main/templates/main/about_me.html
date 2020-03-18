@@ -17,26 +17,40 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 
   <div class="w3-container w3-padding-large" style="margin-bottom:32px">
     <h4><b>个人简介</b></h4>
-    <p>正在完善中。。。</p>
+    <p>我叫上梁山。 高中毕业后，没考上大学，就开始进入社会谋求生存。一开始是进工厂打工、在饭店做服务员、
+      在房地产经纪公司做销售。这几年一直是一名滴滴司机。
+    </p>
+    <p> 十年时间，瞬间即逝，感觉一无所获。十年时间，也感受到了科技进步之快。手机从功能机变成智能手机；汽车
+也开始往电动车方向发展；马斯克已经开始造火箭，要移民火星了。这一切都让我感觉，人应该不断学习，保持进步的可能。
+    </p>
+    <p>既然要学习，就得选一个行业。对于一个只有高中学历的人来说，可以选择的方向很少。乔布斯说每个人都应该学习编程。
+      所以，最近半年，我开始自学编程，希望以编程为起点，来探索未来的各种可能。
+    </p>
+    <p>我的主要知识来源是书籍，网上视频，也买过一些付费专栏。目前，我是以python为中心向外扩展。未来，计算机基础知识和英语的学习，是我的重要事情。</p>
+    <p>如果你是一名计算机行业从业者，请在页面下方给我一些建议，不胜感激。</p>
     <hr>
     
     <h4>技能点</h4>
     <!-- Progress bars / Skills -->
+    <p>English</p>
+    <div class="w3-grey">
+      <div class="w3-container w3-dark-grey w3-padding w3-center" style="width:60%">60% 基本无障碍阅读技术文档</div>
+    </div>
     <p>Photoshop</p>
     <div class="w3-grey">
-      <div class="w3-container w3-dark-grey w3-padding w3-center" style="width:60%">60%</div>
+      <div class="w3-container w3-dark-grey w3-padding w3-center" style="width:30%">30%</div>
     </div>
     <p>Front-end</p>
     <div class="w3-grey">
       <div class="w3-container w3-dark-grey w3-padding w3-center" style="width:60%">60%</div>
     </div>
-    <p>Python</p>
+    <p>Python and Django</p>
     <div class="w3-grey">
       <div class="w3-container w3-dark-grey w3-padding w3-center" style="width:60%">60%</div>
     </div>
-    <p>数据库</p>
+    <p>SQL</p>
     <div class="w3-grey">
-      <div class="w3-container w3-dark-grey w3-padding w3-center" style="width:40%">40% 目前只会CRUD</div>
+      <div class="w3-container w3-dark-grey w3-padding w3-center" style="width:40%">40%</div>
     </div>
     <p>Linux</p>
     <div class="w3-grey">
@@ -49,21 +63,22 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <h4 id="contact"><b>感谢您能给我提一些编程和学习的建议</b></h4>
     
     <hr class="w3-opacity">
-    <form action="/action_page.php" target="_blank">
+    <form action="{% url 'main:advice' %}"  method="POST">
+        {% csrf_token %}
       <div class="w3-section">
         <label>姓名</label>
-        <input class="w3-input w3-border" type="text" name="Name" required>
+        <input class="w3-input w3-border" type="text" name="name" required>
       </div>
       <div class="w3-section">
         <label>邮箱</label>
-        <input class="w3-input w3-border" type="email" name="Email" required>
+        <input class="w3-input w3-border" type="email" name="email" required>
       </div>
       <div class="w3-section">
         <label>具体建议</label>
         <!-- <input class="w3-input w3-border" type="textarea" name="Message" required> -->
-        <textarea class="w3-input w3-border" name="Message" required></textarea>
+        <textarea class="w3-input w3-border" name="message" required></textarea>
       </div>
-      <button type="submit" class="w3-button w3-black w3-margin-bottom"><i class="fa fa-paper-plane w3-margin-right"></i>Send Message</button>
+      <button type="submit" class="w3-button w3-black w3-margin-bottom"><i class="fa fa-paper-plane w3-margin-right"></i>提交</button>
     </form>
   </div>
 
